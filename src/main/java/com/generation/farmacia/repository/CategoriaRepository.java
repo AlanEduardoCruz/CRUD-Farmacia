@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.generation.farmacia.model.Categoria;
 
+
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
 	List<Categoria> findAllByNomeContainingIgnoreCase(@Param("descricao") String descricao);
