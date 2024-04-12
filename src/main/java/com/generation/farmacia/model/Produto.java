@@ -1,7 +1,5 @@
 package com.generation.farmacia.model;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -26,13 +24,10 @@ public class Produto {
 	private String nome;
 
 	@Size(min = 5, max = 100, message = "O atributo descrição deve conter minimo 05 e no máximo 100 caracteres")
-	private String titulo;
-
-	@Size(min = 5, max = 100, message = "O atributo descrição deve conter minimo 05 e no máximo 100 caracteres")
 	private String descricao;
 
 	private double preco;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("categoria")
 	private Categoria categoria;
@@ -51,14 +46,6 @@ public class Produto {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
 	}
 
 	public String getDescricao() {
@@ -84,8 +71,5 @@ public class Produto {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
-	
-	
 
 }

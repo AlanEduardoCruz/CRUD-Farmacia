@@ -42,13 +42,6 @@ public class ProdutoController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
-	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<Object> getByTitulo(@PathVariable String titulo) {
-		// Retorna todas as postagens que contenham o título fornecido (ignorando
-		// maiúsculas e minúsculas)
-		return ResponseEntity.ok(produtoRepository.findAllByTituloContainingIgnoreCase(titulo));
-	}
-
 	@GetMapping("/preco/{preco}")
 	public ResponseEntity<List<Produto>> getByPreco(@PathVariable double preco) {
 		List<Produto> produtos = produtoRepository.findAllByPreco(preco);
@@ -60,11 +53,11 @@ public class ProdutoController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Produto> put(@PathVariable Long id, @Valid @RequestBody Produto produtoAtualizado) {
-	    return produtoRepository.findById(id).map(produtoExistente -> {
-	        produtoExistente.setNome(produtoAtualizado.getNome());	     
-	        // Atualize outros campos, se necessário
-	        return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produtoExistente));
-	    }).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+		return produtoRepository.findById(id).map(produtoExistente -> {
+			produtoExistente.setNome(produtoAtualizado.getNome());
+			// Atualize outros campos, se necessário
+			return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produtoExistente));
+		}).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@PostMapping

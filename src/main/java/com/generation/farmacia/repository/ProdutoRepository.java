@@ -10,6 +10,6 @@ import com.generation.farmacia.model.Produto;
 
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    List<Produto> findAllByTituloContainingIgnoreCase(String titulo);
+  
     List<Produto> findAllByPreco(double preco);
 }
